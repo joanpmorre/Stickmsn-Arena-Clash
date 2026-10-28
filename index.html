@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <title>Stickman: Arena Clash</title>
+        <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+        
+    
+
+
+
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="style.css">
+</head>
+    <body>
+        <div id="app">
+            <section class="screen" id="menu">
+                <div class="sky">
+                    <div class="moon">
+                    </div>
+                    <div class="stars">
+                    </div>
+                    <div class="city">
+                    </div>
+                </div>
+                <div class="menu-stick blue-stick">
+                    <span>
+                    </span>
+                </div>
+                <div class="menu-stick red-stick">
+                    <span>
+                    </span>
+                </div>
+                <main class="menu">
+                    <h1>
+                        STICKMAN
+                        <strong>
+                            ARENA CLASH
+                        </strong>
+                    </h1>
+                    <p>
+                        Fight. Survive. Become the Champion.
+                    </p>
+                    <button class="primary" data-go="arena">
+                        ⚔ ENTER THE ARENA
+                    </button>
+                    <button data-go="oneVOne">⚔ 1V1</button>
+                    <button data-go="training">
+                        ▥ TRAINING
+                    </button>
+                    <button data-go="character">
+                        ● CHARACTER
+                    </button>
+                    <button data-go="levels">
+                        ▣ LEVEL SELECT
+                    </button>
+                    <button data-go="settings">
+                        ⚙ SETTINGS
+                    </button>
+                </main>
+                <div class="snd">
+                    <button onclick="this.classList.toggle('off')">
+                        🔊
+                        <span>
+                            SFX
+                        </span>
+                    </button>
+                    <button onclick="this.classList.toggle('off')">
+                        🎵
+                        <span>
+                            MUSIC
+                        </span>
+                    </button>
+                </div>
+            </section>
+            <section class="screen hidden" id="oneVOne">
+                <div class="sky"><div class="moon"></div><div class="stars"></div><div class="city"></div></div>
+                <div class="menu-stick blue-stick"><span></span></div>
+                <div class="menu-stick red-stick"><span></span></div>
+                <main class="menu">
+                    <h1>1V1 <strong>BATTLE</strong></h1>
+                    <p>Choose how you want to fight.</p>
+                    <button class="primary" data-go="onlineLobby">🌐 ONLINE</button>
+                    <button data-go="versus">🎮 LOCAL</button>
+                    <button class="back" id="oneVOneBack">← BACK TO MENU</button>
+                </main>
+            </section>
+            <section class="screen hidden" id="onlineLobby">
+                <div class="online-panel">
+                    <h2>ONLINE 1V1</h2>
+                    <p>Fight a friend on another phone or computer. Both players need internet and must open the game from a hosted website.</p>
+                    <button class="primary" id="createRoom">CREATE ROOM</button>
+                    <div id="myRoomWrap" hidden>
+                        <p>Share this room ID with your friend:</p>
+                        <div class="online-code" id="myRoomCode"></div>
+                        <button id="copyRoom">COPY ROOM ID</button>
+                    </div>
+                    <hr style="border-color:#51436e;margin:18px 0">
+                    <input id="joinRoomId" autocomplete="off" placeholder="Paste your friend's room ID">
+                    <button id="joinRoom" class="primary">JOIN ROOM</button>
+                    <p id="onlineStatus">Choose Create Room or Join Room.</p>
+                    <button class="back" id="onlineBack">← BACK TO MENU</button>
+                </div>
+            </section>
+            <section class="screen hidden" id="levels">
+                <header>
+                    <button class="back">
+                        ←
+                    </button>
+                    <h2>
+                        LEVEL SELECT
+                        <i>
+                            10 LEVELS
+                        </i>
+                    </h2>
+                </header>
+                <div class="level-wrap">
+                    <div id="levelsGrid">
+                    </div>
+                    <aside class="card preview">
+                        <div id="previewArt">
+                        </div>
+                        <h2 id="previewTitle">
+                            LEVEL 01
+                        </h2>
+                        <p id="previewInfo">
+                        </p>
+                        <button class="primary" id="startLevel">
+                            PLAY LEVEL
+                        </button>
+                    </aside>
+                </div>
+            </section>
+            <section class="screen hidden" id="character">
+                <header>
+                    <button class="back">
+                        ←
+                    </button>
+                    <h2>
+                        CHARACTER
+                        <i>
+                            CUSTOMIZATION
+                        </i>
+                    </h2>
+                </header>
+                <div class="char-wrap">
+                    <div class="card char-stage">
+                        <div class="fighter preview-fighter blue" id="customFighter">
+                            <span class="head">
+                            </span>
+                            <span class="body">
+                            </span>
+                            <span class="arm a1">
+                            </span>
+                            <span class="arm a2">
+                            </span>
+                            <span class="leg l1">
+                            </span>
+                            <span class="leg l2">
+                            </span>
+                        </div>
+                        <div class="platform">
+                        </div>
+                    </div>
+                    <div class="card options">
+                        <h3>
+                            BODY STYLE
+                        </h3>
+                        <div class="choices" id="styles">
+                        </div>
+                        <h3>
+                            BODY COLOR
+                        </h3>
+                        <div class="colors" id="colors">
+                        </div>
+                        <h3>
+                            AURA
+                        </h3>
+                        <div class="aura" id="auras">
+                        </div>
+                        <button class="primary" id="saveChar">
+                            SAVE CHARACTER
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <section class="screen hidden" id="settings">
+                <header>
+                    <button class="back">
+                        ←
+                    </button>
+                    <h2>
+                        SETTINGS
+                    </h2>
+                </header>
+                <div class="card settings">
+                    <label>
+                        Sound
+                        <input checked="" type="checkbox">
+                    </label>
+                    <label>
+                        Music
+                        <input checked="" type="checkbox">
+                    </label>
+                    <label>
+                        Screen Shake
+                        <input checked="" type="checkbox">
+                    </label>
+                    <label for="controlMode">Control Mode
+                        <select id="controlMode" style="background:#071a31;color:#eaf6ff;border:1px solid #2876a8;border-radius:8px;padding:10px;font-weight:800">
+                            <option value="auto">Auto Detect</option>
+                            <option value="computer">Computer / Keyboard</option>
+                            <option value="mobile">Mobile / Touchscreen</option>
+                        </select>
+                    </label>
+                    <button class="reset" id="resetProg">
+                        RESET PROGRESS
+                    </button>
+                    <p id="controlModeHelp">Choose keyboard controls for a computer or touchscreen controls for a phone. Auto Detect selects based on screen size.</p>
+                </div>
+            </section>
+            <section class="screen hidden" id="game">
+                <div id="rotatePrompt" role="status" aria-live="polite"><div class="rotate-card"><div class="rotate-icon">📱 ↻</div><h2>ROTATE YOUR PHONE</h2><p>Stickman Arena Clash is best played in landscape mode.</p><small>Turn your phone sideways to continue.</small></div></div>
+                <div class="hud">
+                    <div class="hud-player">
+                        <div class="avatar blue">
+                            P1
+                        </div>
+                        <div>
+                            <b>
+                                PLAYER 1
+                            </b>
+                            <div class="hp">
+                                <span id="php">
+                                </span>
+                            </div>
+                            <div class="hp en">
+                                <span id="pen">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="level">
+                        <span>
+                            LEVEL
+                            <b id="lv">
+                                01
+                            </b>
+                        </span>
+                        <small id="clock">
+                            WAVE 1/2
+                        </small>
+                    </div>
+                    <div class="hud-player right">
+                        <div>
+                            <b id="enemyLabel">
+                                ENEMY
+                            </b>
+                            <div class="hp enemyhp">
+                                <span id="ehp">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="avatar red">
+                            EN
+                        </div>
+                    </div>
+                </div>
+                <div class="arena" id="arena">
+                    <div class="scene-title" id="sceneTitle">
+                    </div>
+                    <div id="warning">
+                        ENEMY INCOMING
+                    </div>
+                    <div id="bossWarning">
+                        ⚠ BOSS BATTLE ⚠
+                    </div>
+                    <div class="fighter blue" id="player">
+                        <span class="head">
+                        </span>
+                        <span class="body">
+                        </span>
+                        <span class="arm a1">
+                        </span>
+                        <span class="arm a2">
+                        </span>
+                        <span class="leg l1">
+                        </span>
+                        <span class="leg l2">
+                        </span>
+                    </div>
+                    <div class="fighter red" id="enemy">
+                        <span class="head">
+                        </span>
+                        <span class="body">
+                        </span>
+                        <span class="arm a1">
+                        </span>
+                        <span class="arm a2">
+                        </span>
+                        <span class="leg l1">
+                        </span>
+                        <span class="leg l2">
+                        </span>
+                    </div>
+                    <div id="particles">
+                    </div>
+                    <div id="floaters">
+                    </div>
+                    <div class="ground">
+                    </div>
+                    <div id="combo">
+                    </div>
+                    <div id="skillName">
+                    </div>
+                    <div id="cooldowns">
+                        <div class="cool">
+                            <span>
+                                Q
+                            </span>
+                            <b id="cdSpecial">
+                            </b>
+                            <small>
+                                SHOCKWAVE
+                            </small>
+                        </div>
+                        <div class="cool">
+                            <span>
+                                E
+                            </span>
+                            <b id="cdUltimate">
+                            </b>
+                            <small>
+                                METEOR
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div id="rageBar">
+                    <i>
+                        🔥
+                    </i>
+                    <div>
+                        <span id="rageFill">
+                        </span>
+                    </div>
+                    <small>
+                        RAGE
+                    </small>
+                </div>
+                <div class="keyboard">
+                    A/D MOVE • W JUMP • J PUNCH • K KICK • L HEAVY • SHIFT DASH • S BLOCK • SPACE STUN • U RAGE METEOR
+                </div>
+                <div class="touch">
+                    <div id="joy">
+                        <b class="a u">
+                            ▲
+                        </b>
+                        <b class="a d">
+                            ▼
+                        </b>
+                        <b class="a l">
+                            ◀
+                        </b>
+                        <b class="a r">
+                            ▶
+                        </b>
+                        <i id="joyKnob">
+                        </i>
+                    </div>
+                    <div class="acts">
+                        <button class="blk" data-atk="block">
+                            🛡
+                            <small>
+                                S
+                            </small>
+                        </button>
+                        <button class="dsh" data-atk="dash">
+                            💨
+                            <small>
+                                Shift
+                            </small>
+                        </button>
+                        <button data-atk="punch">
+                            ✊
+                            <small>
+                                J
+                            </small>
+                        </button>
+                        <button data-atk="kick">
+                            🦵
+                            <small>
+                                K
+                            </small>
+                        </button>
+                        <button data-atk="heavy">
+                            🔨
+                            <small>
+                                L
+                            </small>
+                        </button>
+                        <button class="rg" data-atk="rage">
+                            🔥
+                            <small>
+                                R
+                            </small>
+                        </button>
+                    </div>
+                </div>
+                <div class="game-top">
+                    <button id="pause" title="Pause game">
+                        Ⅱ
+                    </button>
+                    <button id="exit" title="Exit game">
+                        ✕
+                    </button>
+                </div>
+            <div id="onlineTouch" aria-label="Online player controls">
+                    <div class="touch-group p1-touch">
+                        <button data-touch="left">◀</button><button data-touch="right">▶</button><button data-touch="jump">JUMP</button>
+                        <button class="attack-touch" data-touch="punch">P</button><button class="attack-touch" data-touch="kick">K</button><button class="attack-touch" data-touch="heavy">H</button><button class="attack-touch" data-touch="special">S</button><button class="attack-touch" data-touch="ultimate">U</button>
+                    </div>
+                    <div class="touch-group p2-touch">
+                        <button data-touch="left">◀</button><button data-touch="right">▶</button><button data-touch="jump">JUMP</button>
+                        <button class="attack-touch" data-touch="punch">P</button><button class="attack-touch" data-touch="kick">K</button><button class="attack-touch" data-touch="heavy">H</button><button class="attack-touch" data-touch="special">S</button><button class="attack-touch" data-touch="ultimate">U</button>
+                    </div>
+                </div>
+            <div id="localTouch" aria-label="Local two player touch controls">
+              <div class="local-player p1-local">
+                <strong>PLAYER 1</strong>
+                <div class="local-row"><button data-local="p1:left">◀</button><button data-local="p1:right">▶</button><button data-local="p1:jump">JUMP</button><button data-local="p1:block">BLOCK</button></div>
+                <div class="local-row attacks"><button data-local="p1:punch">PUNCH</button><button data-local="p1:kick">KICK</button><button data-local="p1:heavy">HEAVY</button><button data-local="p1:special">SPECIAL</button><button data-local="p1:ultimate">ULT</button></div>
+              </div>
+              <div class="local-player p2-local">
+                <strong>PLAYER 2</strong>
+                <div class="local-row"><button data-local="p2:left">◀</button><button data-local="p2:right">▶</button><button data-local="p2:jump">JUMP</button><button data-local="p2:block">BLOCK</button></div>
+                <div class="local-row attacks"><button data-local="p2:punch">PUNCH</button><button data-local="p2:kick">KICK</button><button data-local="p2:heavy">HEAVY</button><button data-local="p2:special">SPECIAL</button><button data-local="p2:ultimate">ULT</button></div>
+              </div>
+            </div>
+</section>
+            <div class="modal hidden" id="modal">
+                <div class="card modalbox">
+                    <h2 id="modalTitle">
+                        VICTORY!
+                    </h2>
+                    <p id="modalText">
+                    </p>
+                    <button class="primary" id="next">
+                        CONTINUE
+                    </button>
+                    <button id="menuBtn">
+                        MENU
+                    </button>
+                </div>
+            </div>
+        </div>
+        <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+        <script src="game.js"></script>
+    
+
+
+
+
+<script src="controls.js"></script>
+
+<script src="weapons.js"></script>
+</body>
+</html>
